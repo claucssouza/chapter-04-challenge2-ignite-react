@@ -31,6 +31,11 @@ export const theme = extendTheme({
         colorScheme: 'orange',
       },
     },
+    ModalContent:{
+      baseStyle: {
+        bg: 'pGray.900'
+      }
+    }
   },
   styles: {
     global: {

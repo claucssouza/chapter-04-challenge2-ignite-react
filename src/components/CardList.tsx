@@ -1,5 +1,7 @@
-import { Box, Image, SimpleGrid, Text } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
+import { useState } from 'react';
 import { Card } from './Card';
+import { ModalViewImage } from './Modal/ViewImage';
 
 interface Card {
   title: string;
@@ -14,26 +16,32 @@ interface CardsProps {
 }
 
 export function CardList({ cards }: CardsProps): JSX.Element {
-  // TODO MODAL USEDISCLOSURE
 
-  // TODO SELECTED IMAGE URL STATE
+  const [viewImage, setViewImage] = useState(false);
 
-  // TODO FUNCTION HANDLE VIEW IMAGE
+  const handleViewImage = () => {
+    setViewImage(true);
+  }
+
+  const handleCloseViewImage = () => {
+    setViewImage(false);
+  }
 
   return (
-    <>
-      <SimpleGrid columns={[1,3]} spacing={10}>
-        {cards?.map(item => 
-          <Box bg='pGray.800' w='100%' borderRadius='0.2rem' key={item.id}>
-            <Image src={item.url} width='100%'/>
-            <Box marginLeft='0.8rem' padding='0.4rem'>
-              <Text fontSize='2xl' color='pGray.50' marginTop='0.8rem'>{item.title}</Text>
-              <Text fontSize='lg' color='pGray.100'>{item.description}</Text>
-            </Box>
-          </Box>
-        )}
-      </SimpleGrid >
-      {/* TODO MODALVIEWIMAGE */}
-    </>
+    <SimpleGrid columns={[1,3]} spacing={10}>
+    {cards?.map(item =>
+    <div key={item.id}>
+      <Card data={item} handleViewImage={handleViewImage} />
+      {viewImage && (
+        <ModalViewImage
+          isOpen={viewImage}
+          onClose={handleCloseViewImage}
+          imgUrl={item.url}
+          title={item.title}
+        />
+      )}
+    </div>
+    )}
+  </SimpleGrid >
   );
 }

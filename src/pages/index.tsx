@@ -14,7 +14,7 @@ const getImages = async ({ pageParam = 0 }) => {
 
 export default function Home(): JSX.Element {
 
-    
+
   const {
     data,
     isLoading,
@@ -26,7 +26,7 @@ export default function Home(): JSX.Element {
     'images', getImages, {
         getNextPageParam: (after) => after || 0,
     });
- 
+
   const formattedData = useMemo(() => {
     const dataImages =  data?.pages[0].data?.data.map(itemImage => {
       return itemImage;
@@ -36,12 +36,12 @@ export default function Home(): JSX.Element {
 
   if (isLoading) {
     return (<Loading />);
-  }  
-  
+  }
+
   if (isError) {
     return (<Error />);
   }
-  
+
   return (
     <>
       <Header />
@@ -52,7 +52,7 @@ export default function Home(): JSX.Element {
            onClick={() => fetchNextPage()}
            marginTop='2rem'
          >
-           {hasNextPage ? 'Carregar mais...'  : 'Carregando'}
+           {hasNextPage ? 'Carregar mais...'  : 'Carregando aplicação...'}
          </Button>
         )}
       </Box>

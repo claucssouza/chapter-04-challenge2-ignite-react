@@ -1,10 +1,8 @@
 import {
   Box,
-  Heading,
-  Text,
-  Image,
+  Heading, Image,
   Skeleton,
-  SkeletonText,
+  SkeletonText, Text
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
@@ -17,10 +15,10 @@ interface Card {
 
 interface CardProps {
   data: Card;
-  viewImage: (url: string) => void;
+  handleViewImage: () => void;
 }
 
-export function Card({ data, viewImage }: CardProps): JSX.Element {
+export function Card({ data, handleViewImage }: CardProps): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -33,8 +31,8 @@ export function Card({ data, viewImage }: CardProps): JSX.Element {
           w="max"
           h={48}
           borderTopRadius="md"
-          onClick={() => viewImage(data.url)}
           onLoad={() => setIsLoading(false)}
+          onClick={handleViewImage}
           cursor="pointer"
         />
       </Skeleton>
