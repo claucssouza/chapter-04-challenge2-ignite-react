@@ -121,7 +121,7 @@ describe('Home page', () => {
 
     render(<Home />, { wrapper });
 
-    screen.logTestingPlaygroundURL();
+
 
     expect(await screen.findByText('The best doge')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Doge' })).toBeInTheDocument();

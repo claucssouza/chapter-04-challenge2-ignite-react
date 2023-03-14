@@ -32,8 +32,11 @@ export function ModalViewImage({
         <ModalCloseButton/>
         <ModalBody>
           <Image src={imgUrl} />
-          <Link/>
-        <ModalFooter></ModalFooter>
+        <ModalFooter>
+         <Link href={imgUrl} isExternal fontSize="0.9rem" mr="auto">
+            Abrir original
+          </Link>
+        </ModalFooter>
         </ModalBody>
       </ModalContent>
     </Modal>
